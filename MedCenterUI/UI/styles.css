@@ -1,0 +1,210 @@
+/* 1. Глобальные стили и переменные */
+:root {
+    /* Цветовая палитра в стиле "SANTE" */
+    --primary-blue: #2962FF; /* Яркий, насыщенный синий для акцентов */
+    --secondary-blue: #F0F6FF; /* Очень светлый синий для фонов и ховеров */
+    --text-dark: #212529; /* Почти черный для основного текста */
+    --text-light: #6C757D; /* Серый для второстепенного текста */
+    --background-light: #F8F9FA; /* Светло-серый фон для всей страницы */
+    --border-color: #E0E0E0; /* Цвет рамок */
+    --danger-color: #E53935; /* Красный для кнопок отмены */
+
+    /* Типографика и скругления */
+    --font-family: 'Montserrat', sans-serif;
+    --border-radius-large: 16px; /* Большое скругление для "карточек" */
+    --border-radius-pill: 50px;  /* Полное скругление для кнопок */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Мягкая тень */
+}
+
+/* 2. Базовые настройки */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 3. Header и Footer */
+.main-header {
+    background-color: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 40px;
+    color: var(--text-light);
+}
+
+/* 4. Логика переключения экранов SPA (без изменений) */
+.view {
+    display: none;
+}
+.view.active-view {
+    display: block;
+}
+
+/* 5. СТИЛЬ КАРТОЧКИ - ОСНОВА ДИЗАЙНА */
+.card {
+    background-color: #fff;
+    border-radius: var(--border-radius-large);
+    padding: 30px 40px;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.card h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 6. Стили для форм */
+.styled-form {
+    max-width: 500px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px var(--secondary-blue);
+}
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+/* 7. СТИЛИ ДЛЯ КНОПОК - как у EVA CLINIC */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-pill); /* Овальная форма */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(41, 98, 255, 0.4);
+}
+.btn-secondary {
+    background-color: var(--secondary-blue);
+    color: var(--primary-blue);
+}
+.btn-secondary:hover {
+    background-color: #d8e4ff;
+}
+.btn-danger {
+    background-color: #FFEBEA;
+    color: var(--danger-color);
+}
+.btn-danger:hover {
+    background-color: #ffdad8;
+}
+
+/* 8. Стили для таблиц */
+.table-controls {
+    margin-bottom: 15px;
+}
+.table-controls input {
+    min-width: 300px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-table th, .data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.data-table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+.data-table tbody tr:hover {
+    background-color: var(--secondary-blue);
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АИС Мед Центр</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключаем шрифты, как на примерах -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container">
+        <a href="#" class="logo">МедЦентр</a>
+        <nav class="main-nav">
+            <span id="user-info">Гость</span>
+            <button id="logout-button" class="btn btn-secondary" style="display: none;">Выйти</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <!--
+        ИНСТРУКЦИЯ ПО ДЕМОНСТРАЦИИ:
+        Чтобы показать нужный экран, нужно добавить класс "active-view" к соответствующему тегу <section>.
+        У остальных секций этого класса быть не должно. Сейчас активен экран входа.
+    -->
+
+    <!-- ЭКРАН 1: ФОРМА АВТОРИЗАЦИИ -->
+    <section id="login-view" class="view card ">
+        <h2>Вход в систему</h2>
+        <p>Добро пожаловать! Пожалуйста, введите ваши данные.</p>
+        <form class="styled-form">
+            <div class="form-group">
+                <label for="login">Логин</label>
+                <input type="text" id="login" name="login" placeholder="Введите ваш логин" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <a href="#registration-view" class="btn btn-secondary">Зарегистрироваться</a>
+            </div>
+        </form>
+    </section>
+
+    <!-- ЭКРАН 2: ФОРМА РЕГИСТРАЦИИ -->
+    <section id="registration-view" class="view card ">
+        <h2>Регистрация нового пациента</h2>
+        <p>Создайте аккаунт, чтобы получить доступ к услугам клиники.</p>
+        <form class="styled-form">
+            <div class="form-group">
+                <label for="reg-fio">Ваше ФИО</label>
+                <input type="text" id="reg-fio" name="fio" placeholder="Иванов Иван Иванович" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-login">Придумайте логин</label>
+                <input type="text" id="reg-login" name="login" placeholder="ivanov.ivan" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Придумайте пароль</label>
+                <input type="password" id="reg-password" name="password" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Создать аккаунт</button>
+                <a href="#login-view" class="btn btn-secondary">Уже есть аккаунт?</a>
+            </div>
+        </form>
+    </section>
+
+    <!-- ЭКРАН 3: ЛИЧНЫЙ КАБИНЕТ ПАЦИЕНТА -->
+    <section id="patient-dashboard-view" class="view card ">
+        <div class="card-header">
+            <h2>Личный кабинет</h2>
+            <button class="btn btn-primary">Записаться на прием</button>
+        </div>
+        <h3>Мои предстоящие приемы</h3>
+        <div class="table-controls">
+            <input type="text" placeholder="Фильтр по врачу или услуге...">
+            <button class="btn btn-secondary">Сортировать по дате</button>
+        </div>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Дата и время</th>
+                <th>Врач</th>
+                <th>Специальность</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>15.11.2025 10:30</td>
+                <td>Петров П.П.</td>
+                <td>Терапевт</td>
+                <td><button class="btn btn-danger">Отменить</button></td>
+            </tr>
+            <tr>
+                <td>21.11.2025 14:00</td>
+                <td>Сидорова А.А.</td>
+                <td>Невролог</td>
+                <td><button class="btn btn-danger">Отменить</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ЭКРАН 4: ИНТЕРФЕЙС ВРАЧА -->
+    <section id="doctor-dashboard-view" class="view card ">
+        <div class="card-header">
+            <h2>Приемы на сегодня</h2>
+            <span>Врач: Петров П.П.</span>
+        </div>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Время</th>
+                <th>Пациент</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>09:00</td>
+                <td>Иванов И.И.</td>
+                <td><button class="btn btn-primary">Начать прием</button></td>
+            </tr>
+            <tr>
+                <td>09:30</td>
+                <td>Сидорова А.А.</td>
+                <td><button class="btn btn-primary">Начать прием</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ЭКРАН 5: ФОРМА ОШИБКИ -->
+    <section id="error-view" class="view card ">
+        <h2>Ошибка 404</h2>
+        <p>К сожалению, страница не найдена. Возможно, она была удалена или вы ввели неверный адрес.</p>
+        <div class="form-actions">
+            <a href="#login-view" class="btn btn-primary">На главную</a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <p>&copy; 2025 АИС "МедЦентр"</p>
+    </div>
+</footer>
+
+</body>
+</html>
